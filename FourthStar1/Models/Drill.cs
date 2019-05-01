@@ -8,17 +8,8 @@ namespace FourthStar1.Models
 {
     public class Drill
     {
-
-       
-
-
-    // You must define a type for representing an drill. 
-
-    
-   
         
-
-
+    // You must define a type for representing an drill. 
 
             public int Id { get; set; }
 
