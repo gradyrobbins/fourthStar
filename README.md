@@ -24,9 +24,13 @@ Download or Clone the Repo to your local machine
 
 Open the project in Visual Studio, look for SQL Server Object Explorer and navigate to your local database. Right click on the name and click on properties. Look for "Connection String" and copy the value to the right of it.
 
-Find "Default Connection" in appsettings.json:  replace the default values with: ```"ConnectionStrings": {
+In appsettings.json,  replace the "connectionStrings" values as follows: 
+
+```
+"ConnectionStrings": {
    "DefaultConnection": "Server=localhost\\SQLEXPRESS;Database=FourthStar1;Trusted_Connection=True;MultipleActiveResultSets=true"
  }
+ 
 ```
 
 Navigate to Tools, then NuGet Package Manager, at command prompt type: "add-migration Database", then type "update-database".
