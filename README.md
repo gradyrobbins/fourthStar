@@ -16,13 +16,11 @@ Visual Studio
 Microsoft SQL Server Management Studio
 
 ## Installing & Running
-A step by step series of examples that tell you how to get a development env running
+A step by step series of examples that tell you how to get a development environment running
 
-Fork a copy of the Repo
+Fork a copy of this Repository
 
 Download or Clone the Repo to your local machine
-
-Open the project in Visual Studio, look for SQL Server Object Explorer and navigate to your local database. Right click on the name and click on properties. Look for "Connection String" and copy the value to the right of it.
 
 In appsettings.json,  replace the "connectionStrings" values as follows: 
 
@@ -33,18 +31,18 @@ In appsettings.json,  replace the "connectionStrings" values as follows:
  
 ```
 
-Navigate to Tools, then NuGet Package Manager, at command prompt type: "add-migration Database", then type "update-database".
+Navigate to Tools menu at top of Visual Studio, then NuGet Package Manager, at the command prompt type: "add-migration Database", hit enter, then type "update-database" hit enter.  you can verify that you have a fresh database in SSMS
 
 Look at the top bar and find the green arrow "play button", and make sure FourthStar1 is selected and click the arrow.  This should spin up the project.
 
 Enjoy!
 
-Built With
+####Built With
 C#
 .Net
 
-Author
+###Author
 Grady Robbins
 
-Acknowledgments
+###Acknowledgments
 Special thanks to Andy Collins, Leah Hoeffling, Madi Peper, Emily Lemmon, Shu Sajid, Dejan Stepjanovic, Andy Herring, Brenda Long, Steve Brownlee, Brenda Long, Meg Ducharme, Jenna Solis, John Wark & Nashville Software School
