@@ -16,5 +16,7 @@ namespace FourthStar1.Data
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Drill> Drills { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }

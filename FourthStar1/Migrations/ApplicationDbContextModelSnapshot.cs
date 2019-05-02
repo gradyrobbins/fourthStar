@@ -19,6 +19,38 @@ namespace FourthStar1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("FourthStar1.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CategoryName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("FourthStar1.Models.Drill", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<string>("DrillDescription");
+
+                    b.Property<string>("DrillName");
+
+                    b.Property<int>("PlayersRequired");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Drills");
+                });
+
             modelBuilder.Entity("FourthStar1.Models.Team", b =>
                 {
                     b.Property<int>("Id")
@@ -212,7 +244,7 @@ namespace FourthStar1.Migrations
                     b.Property<string>("LastName")
                         .IsRequired();
 
-                    b.Property<int>("TeamId");
+                    b.Property<int?>("TeamId");
 
                     b.HasIndex("TeamId");
 
@@ -268,8 +300,7 @@ namespace FourthStar1.Migrations
                 {
                     b.HasOne("FourthStar1.Models.Team", "Team")
                         .WithMany("rosterOfPlayers")
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TeamId");
                 });
 #pragma warning restore 612, 618
         }
