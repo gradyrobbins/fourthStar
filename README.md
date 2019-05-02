@@ -45,4 +45,4 @@ C#
 Grady Robbins
 
 ### Acknowledgments
-Special thanks to Andy Collins, Leah Hoeffling, Madi Peper, Emily Lemmon, Shu Sajid, Dejan Stepjanovic, Andy Herring, Brenda Long, Steve Brownlee, Brenda Long, Meg Ducharme, Jenna Solis, John Wark & Nashville Software School
+Special thanks to Andy Collins, Leah Hoeffling, Madi Peper, Emily Lemmon, Shu Sajid, Dejan Stepjanovic, Andy Herring, Steve Brownlee, Brenda Long, Meg Ducharme, Jenna Solis, John Wark & Nashville Software School
