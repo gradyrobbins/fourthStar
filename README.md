@@ -6,6 +6,9 @@
 
 ##### Entity Framework/Identity Framework for user authentication
 
+##### ERD 
+![alt text]('Desktop/4thStar ERD.png' "Fourth Star Entity Relationship Diagram")
+
 ## Getting Started
 The following instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
@@ -18,11 +21,11 @@ Microsoft SQL Server Management Studio
 ## Installing & Running
 A step by step series of examples that tell you how to get a development environment running
 
-Fork a copy of this Repository
+- [ ] Fork a copy of this Repository
 
-Download or Clone the Repo to your local machine
+- [ ] Download or Clone the Repo to your local machine
 
-In appsettings.json,  replace the "connectionStrings" values as follows: 
+- [ ] In appsettings.json,  verify that the "ConnectionStrings" values are as follows: 
 
 ```
 "ConnectionStrings": {
