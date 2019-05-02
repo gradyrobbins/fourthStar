@@ -21,15 +21,42 @@ namespace FourthStar1.Migrations
 
             modelBuilder.Entity("FourthStar1.Models.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CategoryName");
 
-                    b.HasKey("Id");
+                    b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Set Pieces"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Warm Ups"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Offense"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "Defense"
+                        },
+                        new
+                        {
+                            CategoryId = 5,
+                            CategoryName = "GoalKeeper Drills"
+                        });
                 });
 
             modelBuilder.Entity("FourthStar1.Models.Drill", b =>
@@ -49,19 +76,49 @@ namespace FourthStar1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Drills");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DateCreated = new DateTime(2019, 5, 2, 11, 4, 31, 187, DateTimeKind.Local).AddTicks(1428),
+                            DrillDescription = "take 1/2 a lap around the field, stretch hamstrings, quads, calves, torso",
+                            DrillName = "Warm Up / Stretches",
+                            PlayersRequired = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DateCreated = new DateTime(2019, 5, 2, 11, 4, 31, 190, DateTimeKind.Local).AddTicks(6976),
+                            DrillDescription = "Set up 3 cones in a straight line directly in front of the 18 yard box; player will dribble the ball and weave through all 3 cones, then shoot on goal",
+                            DrillName = "3 cone drill",
+                            PlayersRequired = 1
+                        });
                 });
 
             modelBuilder.Entity("FourthStar1.Models.Team", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("TeamId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("TeamName");
 
-                    b.HasKey("Id");
+                    b.HasKey("TeamId");
 
                     b.ToTable("Teams");
+
+                    b.HasData(
+                        new
+                        {
+                            TeamId = 1,
+                            TeamName = "Team Lasers"
+                        },
+                        new
+                        {
+                            TeamId = 2,
+                            TeamName = "Team Express"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -249,6 +306,26 @@ namespace FourthStar1.Migrations
                     b.HasIndex("TeamId");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "a807bc65-f361-4821-b932-3c91733f1f6d",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "2c204660-3119-4680-90a9-27866bd925ad",
+                            Email = "admin@admin.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ADMIN.COM",
+                            NormalizedUserName = "ADMIN@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGn6QzT1lKbRS1VmJF7HEs9rAeUOzloMsYBIZPolw2o3HVOAfoJhtr/cv5aa6iQCEw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "69e99a34-1143-42bc-9a19-21c1407c40d0",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.com",
+                            FirstName = "admin",
+                            LastName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

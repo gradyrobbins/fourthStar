@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FourthStar1.Migrations
 {
-    public partial class George3 : Migration
+    public partial class LaDi : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,13 +26,13 @@ namespace FourthStar1.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    CategoryId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CategoryName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
                 });
 
             migrationBuilder.CreateTable(
@@ -55,13 +55,13 @@ namespace FourthStar1.Migrations
                 name: "Teams",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    TeamId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    TeamName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Teams", x => x.Id);
+                    table.PrimaryKey("PK_Teams", x => x.TeamId);
                 });
 
             migrationBuilder.CreateTable(
@@ -116,7 +116,7 @@ namespace FourthStar1.Migrations
                         name: "FK_AspNetUsers_Teams_TeamId",
                         column: x => x.TeamId,
                         principalTable: "Teams",
-                        principalColumn: "Id",
+                        principalColumn: "TeamId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -203,6 +203,41 @@ namespace FourthStar1.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "FirstName", "LastName", "TeamId" },
+                values: new object[] { "a807bc65-f361-4821-b932-3c91733f1f6d", 0, "2c204660-3119-4680-90a9-27866bd925ad", "ApplicationUser", "admin@admin.com", true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEGn6QzT1lKbRS1VmJF7HEs9rAeUOzloMsYBIZPolw2o3HVOAfoJhtr/cv5aa6iQCEw==", null, false, "69e99a34-1143-42bc-9a19-21c1407c40d0", false, "admin@admin.com", "admin", "admin", null });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName" },
+                values: new object[,]
+                {
+                    { 1, "Set Pieces" },
+                    { 2, "Warm Ups" },
+                    { 3, "Offense" },
+                    { 4, "Defense" },
+                    { 5, "GoalKeeper Drills" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Drills",
+                columns: new[] { "Id", "DateCreated", "DrillDescription", "DrillName", "PlayersRequired" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2019, 5, 2, 11, 4, 31, 187, DateTimeKind.Local).AddTicks(1428), "take 1/2 a lap around the field, stretch hamstrings, quads, calves, torso", "Warm Up / Stretches", 1 },
+                    { 2, new DateTime(2019, 5, 2, 11, 4, 31, 190, DateTimeKind.Local).AddTicks(6976), "Set up 3 cones in a straight line directly in front of the 18 yard box; player will dribble the ball and weave through all 3 cones, then shoot on goal", "3 cone drill", 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Teams",
+                columns: new[] { "TeamId", "TeamName" },
+                values: new object[,]
+                {
+                    { 1, "Team Lasers" },
+                    { 2, "Team Express" }
                 });
 
             migrationBuilder.CreateIndex(

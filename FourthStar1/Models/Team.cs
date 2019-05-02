@@ -13,10 +13,10 @@ namespace FourthStar1.Models
         // The team's name 
         // The collection of users on the team.
         
-            public int Id { get; set; }
+            public int TeamId { get; set; }
 
             [Display(Name = "Team Details")]
-            public string Name { get; set; }
+            public string TeamName { get; set; }
             public List<ApplicationUser> rosterOfPlayers { get; set; } = new List<ApplicationUser>();
 
     }
