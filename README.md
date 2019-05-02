@@ -37,12 +37,12 @@ Look at the top bar and find the green arrow "play button", and make sure Fourth
 
 Enjoy!
 
-####Built With
+#### Built With
 C#
 .Net
 
-###Author
+### Author
 Grady Robbins
 
-###Acknowledgments
+### Acknowledgments
 Special thanks to Andy Collins, Leah Hoeffling, Madi Peper, Emily Lemmon, Shu Sajid, Dejan Stepjanovic, Andy Herring, Brenda Long, Steve Brownlee, Brenda Long, Meg Ducharme, Jenna Solis, John Wark & Nashville Software School
