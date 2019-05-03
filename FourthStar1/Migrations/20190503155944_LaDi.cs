@@ -44,6 +44,8 @@ namespace FourthStar1.Migrations
                     DrillName = table.Column<string>(nullable: true),
                     DrillDescription = table.Column<string>(nullable: true),
                     PlayersRequired = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: false),
                     DateCreated = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -208,7 +210,7 @@ namespace FourthStar1.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "FirstName", "LastName", "TeamId" },
-                values: new object[] { "a807bc65-f361-4821-b932-3c91733f1f6d", 0, "2c204660-3119-4680-90a9-27866bd925ad", "ApplicationUser", "admin@admin.com", true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEGn6QzT1lKbRS1VmJF7HEs9rAeUOzloMsYBIZPolw2o3HVOAfoJhtr/cv5aa6iQCEw==", null, false, "69e99a34-1143-42bc-9a19-21c1407c40d0", false, "admin@admin.com", "admin", "admin", null });
+                values: new object[] { "28fa3880-1e03-45d5-bd73-add38e49eb00", 0, "c3660eb0-2a6a-4076-aa42-339aba996c4a", "ApplicationUser", "admin@admin.com", true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEA+JpyVxYHqtTzOQCAtuon18Zry4Wm6XGF57Ppw/FVo3oE6lJ6IdpM9XN41xxcjs5g==", null, false, "a4be5236-53bd-4dab-8885-66743d678292", false, "admin@admin.com", "admin", "admin", null });
 
             migrationBuilder.InsertData(
                 table: "Categories",
@@ -224,11 +226,11 @@ namespace FourthStar1.Migrations
 
             migrationBuilder.InsertData(
                 table: "Drills",
-                columns: new[] { "Id", "DateCreated", "DrillDescription", "DrillName", "PlayersRequired" },
+                columns: new[] { "Id", "CategoryId", "DateCreated", "DrillDescription", "DrillName", "PlayersRequired", "UserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2019, 5, 2, 11, 4, 31, 187, DateTimeKind.Local).AddTicks(1428), "take 1/2 a lap around the field, stretch hamstrings, quads, calves, torso", "Warm Up / Stretches", 1 },
-                    { 2, new DateTime(2019, 5, 2, 11, 4, 31, 190, DateTimeKind.Local).AddTicks(6976), "Set up 3 cones in a straight line directly in front of the 18 yard box; player will dribble the ball and weave through all 3 cones, then shoot on goal", "3 cone drill", 1 }
+                    { 1, 2, new DateTime(2019, 5, 3, 8, 59, 43, 532, DateTimeKind.Local).AddTicks(7809), "take 1/2 a lap around the field, stretch hamstrings, quads, calves, torso", "Warm Up / Stretches", 1, 0 },
+                    { 2, 3, new DateTime(2019, 5, 3, 8, 59, 43, 537, DateTimeKind.Local).AddTicks(2799), "Set up 3 cones in a straight line directly in front of the 18 yard box; player will dribble the ball and weave through all 3 cones, then shoot on goal", "3 cone drill", 1, 0 }
                 });
 
             migrationBuilder.InsertData(
