@@ -10,6 +10,8 @@ namespace FourthStar1.Models
     {
         public ApplicationUser() { }
 
+        //public int Id { get; set; }
+
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }

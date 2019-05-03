@@ -108,21 +108,21 @@ namespace FourthStar1.Data
                 new Drill()
                 {
                     Id = 1,
+                    //CreatedBy = 
                     DrillName = "Warm Up / Stretches",
-
-
                     DrillDescription = "take 1/2 a lap around the field, stretch hamstrings, quads, calves, torso",
                     PlayersRequired = 1,
+                    CategoryId = 2,
                     DateCreated = DateTime.Now
                 },
                 new Drill()
                 {
                     Id = 2,
+                    //CreatedBy = ApplicationUser.Id
                     DrillName = "3 cone drill",
-
-
                     DrillDescription = "Set up 3 cones in a straight line directly in front of the 18 yard box; player will dribble the ball and weave through all 3 cones, then shoot on goal",
                     PlayersRequired = 1,
+                    CategoryId = 3,
                     DateCreated = DateTime.Now
                 }
             );

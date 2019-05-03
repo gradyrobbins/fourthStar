@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FourthStar1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190502180431_LaDi")]
+    [Migration("20190503155944_LaDi")]
     partial class LaDi
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,6 +67,8 @@ namespace FourthStar1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CategoryId");
+
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<string>("DrillDescription");
@@ -74,6 +76,8 @@ namespace FourthStar1.Migrations
                     b.Property<string>("DrillName");
 
                     b.Property<int>("PlayersRequired");
+
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
@@ -83,18 +87,22 @@ namespace FourthStar1.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2019, 5, 2, 11, 4, 31, 187, DateTimeKind.Local).AddTicks(1428),
+                            CategoryId = 2,
+                            DateCreated = new DateTime(2019, 5, 3, 8, 59, 43, 532, DateTimeKind.Local).AddTicks(7809),
                             DrillDescription = "take 1/2 a lap around the field, stretch hamstrings, quads, calves, torso",
                             DrillName = "Warm Up / Stretches",
-                            PlayersRequired = 1
+                            PlayersRequired = 1,
+                            UserId = 0
                         },
                         new
                         {
                             Id = 2,
-                            DateCreated = new DateTime(2019, 5, 2, 11, 4, 31, 190, DateTimeKind.Local).AddTicks(6976),
+                            CategoryId = 3,
+                            DateCreated = new DateTime(2019, 5, 3, 8, 59, 43, 537, DateTimeKind.Local).AddTicks(2799),
                             DrillDescription = "Set up 3 cones in a straight line directly in front of the 18 yard box; player will dribble the ball and weave through all 3 cones, then shoot on goal",
                             DrillName = "3 cone drill",
-                            PlayersRequired = 1
+                            PlayersRequired = 1,
+                            UserId = 0
                         });
                 });
 
@@ -312,17 +320,17 @@ namespace FourthStar1.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a807bc65-f361-4821-b932-3c91733f1f6d",
+                            Id = "28fa3880-1e03-45d5-bd73-add38e49eb00",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2c204660-3119-4680-90a9-27866bd925ad",
+                            ConcurrencyStamp = "c3660eb0-2a6a-4076-aa42-339aba996c4a",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGn6QzT1lKbRS1VmJF7HEs9rAeUOzloMsYBIZPolw2o3HVOAfoJhtr/cv5aa6iQCEw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA+JpyVxYHqtTzOQCAtuon18Zry4Wm6XGF57Ppw/FVo3oE6lJ6IdpM9XN41xxcjs5g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "69e99a34-1143-42bc-9a19-21c1407c40d0",
+                            SecurityStamp = "a4be5236-53bd-4dab-8885-66743d678292",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com",
                             FirstName = "admin",

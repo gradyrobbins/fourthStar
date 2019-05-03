@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FourthStar1.Models
 {
@@ -21,6 +22,12 @@ namespace FourthStar1.Models
 
             [Display(Name = "Players Required")]
             public int PlayersRequired { get; set; }
+
+            [ForeignKey("ApplicationUser")]
+            public int UserId { get; set; }
+
+            [ForeignKey("Category Id")]
+            public int CategoryId { get; set; }
 
             [Display(Name = "Date Created")]
             public DateTime DateCreated { get; set; }
