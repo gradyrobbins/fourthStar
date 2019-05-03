@@ -6,11 +6,14 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
-
+/*below aligns nav bar items, courtesy Megan Cruzen/slackchannel*/
+.navbar-nav .btn {
+    border: 0;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 @media (min-width: 768px) {
   html {

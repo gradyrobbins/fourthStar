@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FourthStar1.Data;
 using FourthStar1.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FourthStar1.Controllers
 {
@@ -14,10 +17,19 @@ namespace FourthStar1.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public DrillsController(ApplicationDbContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+
+
+        public DrillsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             _context = context;
         }
+
+        //any method that needs to see who the user is can invoke the method
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+
+
 
         // GET: Drills
         public async Task<IActionResult> Index()
@@ -44,8 +56,13 @@ namespace FourthStar1.Controllers
         }
 
         // GET: Drills/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return NotFound();
+            }
             return View();
         }
 
@@ -54,8 +71,14 @@ namespace FourthStar1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DrillName,DrillDescription,PlayersRequired,DateCreated")] Drill drill)
+        public async Task<IActionResult> Create([Bind("Id,DrillName,DrillDescription,PlayersRequired,DateCreated,UserId")] Drill drill)
         {
+            ModelState.Remove("User");
+            ModelState.Remove("userId");
+            var user = await GetCurrentUserAsync();
+            drill.UserId = user.Id;
+
+
             if (ModelState.IsValid)
             {
                 _context.Add(drill);

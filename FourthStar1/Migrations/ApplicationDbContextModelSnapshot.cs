@@ -19,6 +19,87 @@ namespace FourthStar1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("FourthStar1.Models.ApplicationUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AccessFailedCount");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken();
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256);
+
+                    b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired();
+
+                    b.Property<string>("LastName")
+                        .IsRequired();
+
+                    b.Property<bool>("LockoutEnabled");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("SecurityStamp");
+
+                    b.Property<int?>("TeamId");
+
+                    b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "6be08c3b-5c47-40be-8670-00e608a93089",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "fd41fceb-11ea-4a0a-bf06-bbc2891d3edf",
+                            Email = "admin@admin.com",
+                            EmailConfirmed = true,
+                            FirstName = "admin",
+                            LastName = "admin",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ADMIN.COM",
+                            NormalizedUserName = "ADMIN@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDbYc1bNQBxzoqFlIUnRn0xZ2sqMcWpEE4Vt/Hj0AHt4nqegD5NGFZiYw7SR0iwExg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "61a637e9-aec8-42d9-b906-d632b313dcda",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.com"
+                        });
+                });
+
             modelBuilder.Entity("FourthStar1.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")
@@ -75,7 +156,7 @@ namespace FourthStar1.Migrations
 
                     b.Property<int>("PlayersRequired");
 
-                    b.Property<int>("UserId");
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -86,21 +167,51 @@ namespace FourthStar1.Migrations
                         {
                             Id = 1,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2019, 5, 3, 8, 59, 43, 532, DateTimeKind.Local).AddTicks(7809),
-                            DrillDescription = "take 1/2 a lap around the field, stretch hamstrings, quads, calves, torso",
+                            DateCreated = new DateTime(2019, 5, 3, 16, 18, 3, 291, DateTimeKind.Local).AddTicks(8536),
+                            DrillDescription = "Take 1/2 a lap around the field, stretch hamstrings, quads, calves, torso",
                             DrillName = "Warm Up / Stretches",
                             PlayersRequired = 1,
-                            UserId = 0
+                            UserId = "6be08c3b-5c47-40be-8670-00e608a93089"
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2019, 5, 3, 8, 59, 43, 537, DateTimeKind.Local).AddTicks(2799),
+                            DateCreated = new DateTime(2019, 5, 3, 16, 18, 3, 299, DateTimeKind.Local).AddTicks(5037),
                             DrillDescription = "Set up 3 cones in a straight line directly in front of the 18 yard box; player will dribble the ball and weave through all 3 cones, then shoot on goal",
                             DrillName = "3 cone drill",
                             PlayersRequired = 1,
-                            UserId = 0
+                            UserId = "6be08c3b-5c47-40be-8670-00e608a93089"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 5,
+                            DateCreated = new DateTime(2019, 5, 3, 16, 18, 3, 299, DateTimeKind.Local).AddTicks(5053),
+                            DrillDescription = "Make yourself BIG; pick a direction to dive, angle out at a 30 degree angle to maximize your angle",
+                            DrillName = "Penalty Kick - GoalKeeper",
+                            PlayersRequired = 2,
+                            UserId = "6be08c3b-5c47-40be-8670-00e608a93089"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 5,
+                            DateCreated = new DateTime(2019, 5, 3, 16, 18, 3, 299, DateTimeKind.Local).AddTicks(5056),
+                            DrillDescription = "Five offensive players on the perimeter; 2 touches max; 2 defenders inside the perimeter",
+                            DrillName = "5 v 2",
+                            PlayersRequired = 2,
+                            UserId = "6be08c3b-5c47-40be-8670-00e608a93089"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 3,
+                            DateCreated = new DateTime(2019, 5, 3, 16, 18, 3, 299, DateTimeKind.Local).AddTicks(5059),
+                            DrillDescription = "Place the ball on the 12 yard mark; aim for the side netting",
+                            DrillName = "Penalty Kick - Offense",
+                            PlayersRequired = 2,
+                            UserId = "6be08c3b-5c47-40be-8670-00e608a93089"
                         });
                 });
 
@@ -171,62 +282,6 @@ namespace FourthStar1.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AccessFailedCount");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken();
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256);
-
-                    b.Property<bool>("EmailConfirmed");
-
-                    b.Property<bool>("LockoutEnabled");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("PasswordHash");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<bool>("PhoneNumberConfirmed");
-
-                    b.Property<string>("SecurityStamp");
-
-                    b.Property<bool>("TwoFactorEnabled");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -301,39 +356,9 @@ namespace FourthStar1.Migrations
 
             modelBuilder.Entity("FourthStar1.Models.ApplicationUser", b =>
                 {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired();
-
-                    b.Property<string>("LastName")
-                        .IsRequired();
-
-                    b.Property<int?>("TeamId");
-
-                    b.HasIndex("TeamId");
-
-                    b.HasDiscriminator().HasValue("ApplicationUser");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "28fa3880-1e03-45d5-bd73-add38e49eb00",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "c3660eb0-2a6a-4076-aa42-339aba996c4a",
-                            Email = "admin@admin.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@ADMIN.COM",
-                            NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEA+JpyVxYHqtTzOQCAtuon18Zry4Wm6XGF57Ppw/FVo3oE6lJ6IdpM9XN41xxcjs5g==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "a4be5236-53bd-4dab-8885-66743d678292",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@admin.com",
-                            FirstName = "admin",
-                            LastName = "admin"
-                        });
+                    b.HasOne("FourthStar1.Models.Team", "Team")
+                        .WithMany("rosterOfPlayers")
+                        .HasForeignKey("TeamId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -346,7 +371,7 @@ namespace FourthStar1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
+                    b.HasOne("FourthStar1.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -354,7 +379,7 @@ namespace FourthStar1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
+                    b.HasOne("FourthStar1.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -367,7 +392,7 @@ namespace FourthStar1.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
+                    b.HasOne("FourthStar1.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -375,17 +400,10 @@ namespace FourthStar1.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
+                    b.HasOne("FourthStar1.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("FourthStar1.Models.ApplicationUser", b =>
-                {
-                    b.HasOne("FourthStar1.Models.Team", "Team")
-                        .WithMany("rosterOfPlayers")
-                        .HasForeignKey("TeamId");
                 });
 #pragma warning restore 612, 618
         }

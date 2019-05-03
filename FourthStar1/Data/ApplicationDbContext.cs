@@ -21,7 +21,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FourthStar1.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -108,9 +108,9 @@ namespace FourthStar1.Data
                 new Drill()
                 {
                     Id = 1,
-                    //CreatedBy = 
+                    UserId = user.Id,
                     DrillName = "Warm Up / Stretches",
-                    DrillDescription = "take 1/2 a lap around the field, stretch hamstrings, quads, calves, torso",
+                    DrillDescription = "Take 1/2 a lap around the field, stretch hamstrings, quads, calves, torso",
                     PlayersRequired = 1,
                     CategoryId = 2,
                     DateCreated = DateTime.Now
@@ -118,10 +118,40 @@ namespace FourthStar1.Data
                 new Drill()
                 {
                     Id = 2,
-                    //CreatedBy = ApplicationUser.Id
+                    UserId = user.Id,
                     DrillName = "3 cone drill",
                     DrillDescription = "Set up 3 cones in a straight line directly in front of the 18 yard box; player will dribble the ball and weave through all 3 cones, then shoot on goal",
                     PlayersRequired = 1,
+                    CategoryId = 3,
+                    DateCreated = DateTime.Now
+                },
+                new Drill()
+                {
+                    Id = 3,
+                    UserId = user.Id,
+                    DrillName = "Penalty Kick - GoalKeeper",
+                    DrillDescription = "Make yourself BIG; pick a direction to dive, angle out at a 30 degree angle to maximize your angle",
+                    PlayersRequired = 2,
+                    CategoryId = 5,
+                    DateCreated = DateTime.Now
+                },
+                new Drill()
+                {
+                    Id = 4,
+                    UserId = user.Id,
+                    DrillName = "5 v 2",
+                    DrillDescription = "Five offensive players on the perimeter; 2 touches max; 2 defenders inside the perimeter",
+                    PlayersRequired = 2,
+                    CategoryId = 5,
+                    DateCreated = DateTime.Now
+                },
+                new Drill()
+                {
+                    Id = 5,
+                    UserId = user.Id,
+                    DrillName = "Penalty Kick - Offense",
+                    DrillDescription = "Place the ball on the 12 yard mark; aim for the side netting",
+                    PlayersRequired = 2,
                     CategoryId = 3,
                     DateCreated = DateTime.Now
                 }
