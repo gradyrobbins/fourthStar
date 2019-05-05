@@ -24,7 +24,7 @@ namespace FourthStar1.Models
             public int PlayersRequired { get; set; }
 
             [ForeignKey("ApplicationUser")]
-            public int UserId { get; set; }
+            public string UserId { get; set; }
 
             [ForeignKey("Category Id")]
             public int CategoryId { get; set; }
