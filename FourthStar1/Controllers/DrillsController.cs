@@ -75,6 +75,7 @@ namespace FourthStar1.Controllers
         {
             ModelState.Remove("User");
             ModelState.Remove("userId");
+
             var user = await GetCurrentUserAsync();
             drill.UserId = user.Id;
 
