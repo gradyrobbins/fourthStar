@@ -1,4 +1,4 @@
-﻿@model FourthStar1.Models.Drill
+﻿@model FourthStar1.Models.ViewModels.DrillCategory
 
 @{
     ViewData["Title"] = "Edit";
@@ -12,31 +12,31 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Drill.Id" />
             <div class="form-group">
-                <label asp-for="DrillName" class="control-label"></label>
-                <input asp-for="DrillName" class="form-control" />
-                <span asp-validation-for="DrillName" class="text-danger"></span>
+                <label asp-for="Drill.DrillName" class="control-label"></label>
+                <input asp-for="Drill.DrillName" class="form-control" />
+                <span asp-validation-for="Drill.DrillName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DrillDescription" class="control-label"></label>
-                <input asp-for="DrillDescription" class="form-control" />
-                <span asp-validation-for="DrillDescription" class="text-danger"></span>
+                <label asp-for="Drill.DrillDescription" class="control-label"></label>
+                <input asp-for="Drill.DrillDescription" class="form-control" />
+                <span asp-validation-for="Drill.DrillDescription" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PlayersRequired" class="control-label"></label>
-                <input asp-for="PlayersRequired" class="form-control" />
-                <span asp-validation-for="PlayersRequired" class="text-danger"></span>
+                <label asp-for="Drill.PlayersRequired" class="control-label"></label>
+                <input asp-for="Drill.PlayersRequired" class="form-control" />
+                <span asp-validation-for="Drill.PlayersRequired" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DateCreated" class="control-label"></label>
-                <input asp-for="DateCreated" class="form-control" />
-                <span asp-validation-for="DateCreated" class="text-danger"></span>
+                <label asp-for="Drill.DateCreated" class="control-label"></label>
+                <input asp-for="Drill.DateCreated" class="form-control" />
+                <span asp-validation-for="Drill.DateCreated" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <input asp-for="CategoryId" class="form-control" />
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                <label asp-for="CategoryOptions" class="control-label"></label>
+                <select asp-for="Drill.CategoryId" class="form-control" asp-items="@Model.CategoryOptions"></select>
+                <span asp-validation-for="CategoryOptions" class="text-danger"></span>
             </div>
 
 

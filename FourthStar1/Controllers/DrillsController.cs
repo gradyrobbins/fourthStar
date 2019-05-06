@@ -67,8 +67,22 @@ namespace FourthStar1.Controllers
             }
 
             {
-                ViewData["CohortId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
-                return View();
+                //var drill = _context.Drills.FindAsync();
+
+                //instantiate new viewmodel
+                var viewModel = new DrillCategory()
+                {
+                    //i think Drill ='s null because the user is creating it, not the viewModel
+                    Drill = null,
+                    CategoryOptions = _context.Categories.Select(c => new SelectListItem
+                    {
+                        Value = c.CategoryId.ToString(),
+                        Text = c.CategoryName
+                    }).ToList()
+                };
+
+                //ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
+                return View(viewModel);
             }
 
 
