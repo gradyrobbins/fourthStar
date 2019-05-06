@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FourthStar1.Data;
 using FourthStar1.Models;
+using FourthStar1.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Authorization;
@@ -34,7 +35,8 @@ namespace FourthStar1.Controllers
         // GET: Drills
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Drills.ToListAsync());
+            var currentuser = await GetCurrentUserAsync();
+            return View(await _context.Drills.Where(m => m.UserId == currentuser.Id).ToListAsync());
         }
 
         // GET: Drills/Details/5
@@ -63,7 +65,29 @@ namespace FourthStar1.Controllers
             {
                 return NotFound();
             }
-            return View();
+
+            {
+                //var drill = _context.Drills.FindAsync();
+
+                //instantiate new viewmodel
+                var viewModel = new DrillCategory()
+                {
+                    //i think Drill ='s null because the user is creating it, not the viewModel
+                    Drill = null,
+                    CategoryOptions = _context.Categories.Select(c => new SelectListItem
+                    {
+                        Value = c.CategoryId.ToString(),
+                        Text = c.CategoryName
+                    }).ToList()
+                };
+
+                //ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
+                return View(viewModel);
+            }
+
+
+
+            //return View();
         }
 
         // POST: Drills/Create
@@ -71,8 +95,9 @@ namespace FourthStar1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DrillName,DrillDescription,PlayersRequired,DateCreated,UserId")] Drill drill)
+        public async Task<IActionResult> Create([Bind("Id,DrillName,DrillDescription,PlayersRequired,DateCreated,UserId,CategoryId")] Drill drill)
         {
+            //don't fully understand why removing user/userId from ModelState here.
             ModelState.Remove("User");
             ModelState.Remove("userId");
 
@@ -86,6 +111,8 @@ namespace FourthStar1.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", drill.CategoryId);
             return View(drill);
         }
 

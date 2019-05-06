@@ -82,9 +82,9 @@ namespace FourthStar1.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6be08c3b-5c47-40be-8670-00e608a93089",
+                            Id = "12fc5fee-1ac1-4de6-858c-b498eff2837c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fd41fceb-11ea-4a0a-bf06-bbc2891d3edf",
+                            ConcurrencyStamp = "6c83696b-e20d-4d4c-acef-0978049de966",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "admin",
@@ -92,9 +92,9 @@ namespace FourthStar1.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDbYc1bNQBxzoqFlIUnRn0xZ2sqMcWpEE4Vt/Hj0AHt4nqegD5NGFZiYw7SR0iwExg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELytkM4P8gsPHUOrWUsLSwXh53PMzJ6kP5M5qs5WN73WHlkjbumvc8QE0CajAKkvWQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "61a637e9-aec8-42d9-b906-d632b313dcda",
+                            SecurityStamp = "78613a76-f1d9-4d9e-841b-7fa7591e4d00",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         });
@@ -167,51 +167,51 @@ namespace FourthStar1.Migrations
                         {
                             Id = 1,
                             CategoryId = 2,
-                            DateCreated = new DateTime(2019, 5, 3, 16, 18, 3, 291, DateTimeKind.Local).AddTicks(8536),
+                            DateCreated = new DateTime(2019, 5, 6, 9, 42, 30, 640, DateTimeKind.Local).AddTicks(4550),
                             DrillDescription = "Take 1/2 a lap around the field, stretch hamstrings, quads, calves, torso",
                             DrillName = "Warm Up / Stretches",
                             PlayersRequired = 1,
-                            UserId = "6be08c3b-5c47-40be-8670-00e608a93089"
+                            UserId = "12fc5fee-1ac1-4de6-858c-b498eff2837c"
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2019, 5, 3, 16, 18, 3, 299, DateTimeKind.Local).AddTicks(5037),
+                            DateCreated = new DateTime(2019, 5, 6, 9, 42, 30, 646, DateTimeKind.Local).AddTicks(3370),
                             DrillDescription = "Set up 3 cones in a straight line directly in front of the 18 yard box; player will dribble the ball and weave through all 3 cones, then shoot on goal",
                             DrillName = "3 cone drill",
                             PlayersRequired = 1,
-                            UserId = "6be08c3b-5c47-40be-8670-00e608a93089"
+                            UserId = "12fc5fee-1ac1-4de6-858c-b498eff2837c"
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 5,
-                            DateCreated = new DateTime(2019, 5, 3, 16, 18, 3, 299, DateTimeKind.Local).AddTicks(5053),
+                            DateCreated = new DateTime(2019, 5, 6, 9, 42, 30, 646, DateTimeKind.Local).AddTicks(3384),
                             DrillDescription = "Make yourself BIG; pick a direction to dive, angle out at a 30 degree angle to maximize your angle",
                             DrillName = "Penalty Kick - GoalKeeper",
                             PlayersRequired = 2,
-                            UserId = "6be08c3b-5c47-40be-8670-00e608a93089"
+                            UserId = "12fc5fee-1ac1-4de6-858c-b498eff2837c"
                         },
                         new
                         {
                             Id = 4,
                             CategoryId = 5,
-                            DateCreated = new DateTime(2019, 5, 3, 16, 18, 3, 299, DateTimeKind.Local).AddTicks(5056),
+                            DateCreated = new DateTime(2019, 5, 6, 9, 42, 30, 646, DateTimeKind.Local).AddTicks(3387),
                             DrillDescription = "Five offensive players on the perimeter; 2 touches max; 2 defenders inside the perimeter",
                             DrillName = "5 v 2",
                             PlayersRequired = 2,
-                            UserId = "6be08c3b-5c47-40be-8670-00e608a93089"
+                            UserId = "12fc5fee-1ac1-4de6-858c-b498eff2837c"
                         },
                         new
                         {
                             Id = 5,
                             CategoryId = 3,
-                            DateCreated = new DateTime(2019, 5, 3, 16, 18, 3, 299, DateTimeKind.Local).AddTicks(5059),
+                            DateCreated = new DateTime(2019, 5, 6, 9, 42, 30, 646, DateTimeKind.Local).AddTicks(3390),
                             DrillDescription = "Place the ball on the 12 yard mark; aim for the side netting",
                             DrillName = "Penalty Kick - Offense",
                             PlayersRequired = 2,
-                            UserId = "6be08c3b-5c47-40be-8670-00e608a93089"
+                            UserId = "12fc5fee-1ac1-4de6-858c-b498eff2837c"
                         });
                 });
 
