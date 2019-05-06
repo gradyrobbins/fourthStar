@@ -95,7 +95,7 @@ namespace FourthStar1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DrillName,DrillDescription,PlayersRequired,DateCreated,UserId")] Drill drill)
+        public async Task<IActionResult> Create([Bind("Id,DrillName,DrillDescription,PlayersRequired,DateCreated,UserId,CategoryId")] Drill drill)
         {
             //don't fully understand why removing user/userId from ModelState here.
             ModelState.Remove("User");
