@@ -36,8 +36,30 @@ namespace FourthStar1.Controllers
         public async Task<IActionResult> Index()
         {
             var currentuser = await GetCurrentUserAsync();
+
+
+
+            var applicationDBContext = _context.Drills
+                .Include(d => d.Category)
+                ;
+
             return View(await _context.Drills.Where(m => m.UserId == currentuser.Id).ToListAsync());
         }
+
+        //below modeled after IcePhantoms/Bangazon/HomeController
+        //public async Task<IActionResult> Index()
+        //{
+        //    var applicationDbContext = _context.Product
+        //       .Include(p => p.ProductType)
+        //       .Include(p => p.User)
+        //       .OrderBy(p => p.DateCreated)
+        //       .Take(20);
+        //    return View(await applicationDbContext.ToListAsync());
+        //}
+
+
+
+
 
         // GET: Drills/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -47,7 +69,11 @@ namespace FourthStar1.Controllers
                 return NotFound();
             }
 
+            
+
             var drill = await _context.Drills
+                .Include(d => d.Category)
+                .Where(d => d.CategoryId == id)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (drill == null)
             {
@@ -112,10 +138,20 @@ namespace FourthStar1.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
+            var viewmodel = new DrillCategory()
+            {
+                Drill = null,
+                CategoryOptions = _context.Categories.Select(c => new SelectListItem
+                {
+                    Value = c.CategoryId.ToString(),
+                    Text = c.CategoryName
+                }).ToList()
+            };
 
 
-            //ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", drill.CategoryId);
-            return View(drill);
+            return View(viewmodel);
+
+
         }
 
         // GET: Drills/Edit/5

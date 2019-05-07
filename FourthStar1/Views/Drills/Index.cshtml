@@ -19,9 +19,12 @@
                 @Html.DisplayNameFor(model => model.DrillDescription)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.PlayersRequired)
             </th>
-            
+
             <th></th>
         </tr>
     </thead>
@@ -35,9 +38,12 @@
                 @Html.DisplayFor(modelItem => item.DrillDescription)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.PlayersRequired)
             </td>
-            
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
