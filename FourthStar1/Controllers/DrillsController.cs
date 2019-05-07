@@ -112,7 +112,9 @@ namespace FourthStar1.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", drill.CategoryId);
+
+
+            //ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", drill.CategoryId);
             return View(drill);
         }
 
@@ -129,7 +131,18 @@ namespace FourthStar1.Controllers
             {
                 return NotFound();
             }
-            return View(drill);
+
+            var viewmodel = new DrillCategory()
+            {
+                Drill = drill,
+                CategoryOptions = _context.Categories.Select(c => new SelectListItem
+                {
+                    Value = c.CategoryId.ToString(),
+                    Text = c.CategoryName
+                }).ToList()
+            };
+           
+            return View(viewmodel);
         }
 
         // POST: Drills/Edit/5
@@ -137,12 +150,19 @@ namespace FourthStar1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DrillName,DrillDescription,PlayersRequired,DateCreated")] Drill drill)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DrillName,DrillDescription,PlayersRequired,DateCreated,CategoryId")] Drill drill)
         {
             if (id != drill.Id)
             {
                 return NotFound();
             }
+
+            //don't fully understand why removing user/userId from ModelState here.
+            ModelState.Remove("User");
+            ModelState.Remove("userId");
+
+            var user = await GetCurrentUserAsync();
+            drill.UserId = user.Id;
 
             if (ModelState.IsValid)
             {
@@ -164,7 +184,20 @@ namespace FourthStar1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(drill);
+
+            /*else do the work similar to create/ 'post' however drill is already defined, Drill = drill*/
+            var viewmodel = new DrillCategory()
+            {
+                Drill = drill,
+                CategoryOptions = _context.Categories.Select(c => new SelectListItem
+                {
+                    Value = c.CategoryId.ToString(),
+                    Text = c.CategoryName
+                }).ToList()
+            };
+
+
+            return View(viewmodel);
         }
 
         // GET: Drills/Delete/5
