@@ -39,11 +39,11 @@ namespace FourthStar1.Controllers
 
 
 
-            var applicationDBContext = _context.Drills
-                .Include(d => d.Category)
-                ;
+            //var applicationDBContext = _context.Drills
+            //    .Include(d => d.Category)
+            //    ;
 
-            return View(await _context.Drills.Where(m => m.UserId == currentuser.Id).ToListAsync());
+            return View(await _context.Drills.Include(d => d.Category).Where(m => m.UserId == currentuser.Id).ToListAsync());
         }
 
         //below modeled after IcePhantoms/Bangazon/HomeController
@@ -73,7 +73,7 @@ namespace FourthStar1.Controllers
 
             var drill = await _context.Drills
                 .Include(d => d.Category)
-                .Where(d => d.CategoryId == id)
+                //.Where(d => d.CategoryId == id)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (drill == null)
             {
