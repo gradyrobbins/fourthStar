@@ -26,8 +26,10 @@ namespace FourthStar1.Models
             [ForeignKey("ApplicationUser")]
             public string UserId { get; set; }
 
-            [ForeignKey("Category Id")]
+            [ForeignKey("CategoryId")]
             public int CategoryId { get; set; }
+
+            public Category Category { get; set; }
 
             [Display(Name = "Date Created")]
             public DateTime DateCreated { get; set; }

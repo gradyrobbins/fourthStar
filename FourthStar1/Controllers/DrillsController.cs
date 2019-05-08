@@ -36,8 +36,30 @@ namespace FourthStar1.Controllers
         public async Task<IActionResult> Index()
         {
             var currentuser = await GetCurrentUserAsync();
-            return View(await _context.Drills.Where(m => m.UserId == currentuser.Id).ToListAsync());
+
+
+
+            //var applicationDBContext = _context.Drills
+            //    .Include(d => d.Category)
+            //    ;
+
+            return View(await _context.Drills.Include(d => d.Category).Where(m => m.UserId == currentuser.Id).ToListAsync());
         }
+
+        //below modeled after IcePhantoms/Bangazon/HomeController
+        //public async Task<IActionResult> Index()
+        //{
+        //    var applicationDbContext = _context.Product
+        //       .Include(p => p.ProductType)
+        //       .Include(p => p.User)
+        //       .OrderBy(p => p.DateCreated)
+        //       .Take(20);
+        //    return View(await applicationDbContext.ToListAsync());
+        //}
+
+
+
+
 
         // GET: Drills/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -47,7 +69,11 @@ namespace FourthStar1.Controllers
                 return NotFound();
             }
 
+            
+
             var drill = await _context.Drills
+                .Include(d => d.Category)
+                //.Where(d => d.CategoryId == id)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (drill == null)
             {
@@ -112,8 +138,20 @@ namespace FourthStar1.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", drill.CategoryId);
-            return View(drill);
+            var viewmodel = new DrillCategory()
+            {
+                Drill = null,
+                CategoryOptions = _context.Categories.Select(c => new SelectListItem
+                {
+                    Value = c.CategoryId.ToString(),
+                    Text = c.CategoryName
+                }).ToList()
+            };
+
+
+            return View(viewmodel);
+
+
         }
 
         // GET: Drills/Edit/5
@@ -129,7 +167,18 @@ namespace FourthStar1.Controllers
             {
                 return NotFound();
             }
-            return View(drill);
+
+            var viewmodel = new DrillCategory()
+            {
+                Drill = drill,
+                CategoryOptions = _context.Categories.Select(c => new SelectListItem
+                {
+                    Value = c.CategoryId.ToString(),
+                    Text = c.CategoryName
+                }).ToList()
+            };
+           
+            return View(viewmodel);
         }
 
         // POST: Drills/Edit/5
@@ -137,12 +186,19 @@ namespace FourthStar1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DrillName,DrillDescription,PlayersRequired,DateCreated")] Drill drill)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DrillName,DrillDescription,PlayersRequired,DateCreated,CategoryId")] Drill drill)
         {
             if (id != drill.Id)
             {
                 return NotFound();
             }
+
+            //don't fully understand why removing user/userId from ModelState here.
+            ModelState.Remove("User");
+            ModelState.Remove("userId");
+
+            var user = await GetCurrentUserAsync();
+            drill.UserId = user.Id;
 
             if (ModelState.IsValid)
             {
@@ -164,7 +220,20 @@ namespace FourthStar1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(drill);
+
+            /*else do the work similar to create/ 'post' however drill is already defined, Drill = drill*/
+            var viewmodel = new DrillCategory()
+            {
+                Drill = drill,
+                CategoryOptions = _context.Categories.Select(c => new SelectListItem
+                {
+                    Value = c.CategoryId.ToString(),
+                    Text = c.CategoryName
+                }).ToList()
+            };
+
+
+            return View(viewmodel);
         }
 
         // GET: Drills/Delete/5
