@@ -33,29 +33,32 @@ namespace FourthStar1.Controllers
 
 
         // GET: Drills
-        public async Task<IActionResult> Index()
+
+        //below .Include() clause to Category Table was modeled after C29/IcePhantoms/Bangazon/HomeController
+        //below Index method also indebted to Microsoft tutorial for adding search functionality to MVC:  
+        //https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/search?view=aspnetcore-2.2
+
+        public async Task<IActionResult> Index(string searchString)
         {
             var currentuser = await GetCurrentUserAsync();
 
+            var drills = from d in _context.Drills
+                         select d;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                drills = drills.Where(s => s.DrillDescription.Contains(searchString)).Include(d => d.Category).Where(m => m.UserId == currentuser.Id);
+                return View(await drills.ToListAsync());
+
+            }
 
 
-            //var applicationDBContext = _context.Drills
-            //    .Include(d => d.Category)
-            //    ;
-
+            //this view is returned if user is NOT trying to implement search functionality.
             return View(await _context.Drills.Include(d => d.Category).Where(m => m.UserId == currentuser.Id).ToListAsync());
         }
 
-        //below modeled after IcePhantoms/Bangazon/HomeController
-        //public async Task<IActionResult> Index()
-        //{
-        //    var applicationDbContext = _context.Product
-        //       .Include(p => p.ProductType)
-        //       .Include(p => p.User)
-        //       .OrderBy(p => p.DateCreated)
-        //       .Take(20);
-        //    return View(await applicationDbContext.ToListAsync());
-        //}
+
+
 
 
 

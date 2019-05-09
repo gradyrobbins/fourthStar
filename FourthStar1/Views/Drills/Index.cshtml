@@ -9,6 +9,15 @@
 <p>
     <a asp-action="Create">Create a New Drill</a>
 </p>
+
+<form asp-controller="Drills" asp-action="Index">
+    <p>
+        Search Your Drills: <input type="text" name="SearchString">
+        <input type="submit" value="Keyword Search" />
+    </p>
+</form>
+
+
 <table class="table">
     <thead>
         <tr>
