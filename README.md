@@ -7,7 +7,7 @@
 ##### Entity Framework/Identity Framework for user authentication
 
 ##### ERD 
-"Fourth Star Entity Relationship Diagram" -- temporary placeholder
+coming soon
 
 ## Getting Started
 The following instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -48,4 +48,4 @@ C#
 Grady Robbins
 
 ### Acknowledgments
-Special thanks to Andy Collins, Jisie David, Brenda Long, Steve 'Coach' Brownlee, Meg Ducharme, Leah Hoeffling, Madi Peper, Emily Lemmon, Shu Sajid, Dejan Stepjanovic, Andrew Herring, Jenna Solis (Mahalo), John Wark & Nashville Software School
+Special thanks to Julie Jones, Andy Collins, Jisie David, Brenda Long, Steve 'Coach' Brownlee, Meg Ducharme, Leah Hoeffling, Madi Peper, Emily Lemmon, Shu Sajid, Dejan Stepjanovic, Andrew Herring, Jenna Solis (Mahalo), John Wark & Nashville Software School Cohorts 25, 26, 27, 28 and 29!
