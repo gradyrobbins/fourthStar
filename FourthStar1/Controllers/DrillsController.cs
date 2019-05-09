@@ -47,14 +47,13 @@ namespace FourthStar1.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                drills = drills.Where(s => s.DrillDescription.Contains(searchString)).Include(d => d.Category);
+                drills = drills.Where(s => s.DrillDescription.Contains(searchString)).Include(d => d.Category).Where(m => m.UserId == currentuser.Id);
                 return View(await drills.ToListAsync());
 
             }
 
 
-            //this return worked before trying to implement search functionality.
-            
+            //this view is returned if user is NOT trying to implement search functionality.
             return View(await _context.Drills.Include(d => d.Category).Where(m => m.UserId == currentuser.Id).ToListAsync());
         }
 
