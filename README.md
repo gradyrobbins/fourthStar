@@ -7,7 +7,9 @@
 ##### Entity Framework/Identity Framework for user authentication
 
 ##### ERD 
-coming soon
+Here is a link to the google document with my ERD:
+
+https://docs.google.com/document/d/1NguTM-2AqzTCaf0kycH6MYCr-eL9xfmL5ga5PHqujW4/edit?usp=sharing
 
 ## Getting Started
 The following instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
