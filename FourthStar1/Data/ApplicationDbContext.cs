@@ -11,13 +11,8 @@ using Microsoft.EntityFrameworkCore;
 
 //# Seeding the Database
 
-// You can seed your database by adding instructions in your `ApplicationDbContext.cs` file with an `OnModelCreating` method.Once you've defined some objects in this method, when you generate a new migration with `Add-Migration DescriptiveLabel`, then instructions will be added to the migration file to insert the data.
-
+// You can seed your database by adding instructions in your `ApplicationDbContext.cs` file with an `OnModelCreating` method.  Once you've defined some objects in this method, when you generate a new migration with `Add-Migration [DescriptiveLabel]`, then instructions will be added to the migration file to insert the data.
 //When the `Update-Database` instruction is given, then the items will be added to your database.
-
-
-
-
 
 namespace FourthStar1.Data
 {
@@ -40,13 +35,11 @@ namespace FourthStar1.Data
                 base.OnModelCreating(modelBuilder);
             }
 
-
             // Create a new user for Identity Framework
             ApplicationUser user = new ApplicationUser
             {
                 FirstName = "admin",
                 LastName = "admin",
-               
                 UserName = "admin@admin.com",
                 NormalizedUserName = "ADMIN@ADMIN.COM",
                 Email = "admin@admin.com",
@@ -102,7 +95,6 @@ namespace FourthStar1.Data
                 }
             );
 
-
             // Create a few drills
             modelBuilder.Entity<Drill>().HasData(
                 new Drill()
@@ -157,10 +149,5 @@ namespace FourthStar1.Data
                 }
             );
         }
-
-
-
     }
-
-    
-    }
+}

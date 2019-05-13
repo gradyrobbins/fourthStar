@@ -10,7 +10,7 @@ namespace FourthStar1.Models
     public class Drill
     {
         
-    // You must define a type for representing an drill. 
+    // You must define a type for representing a drill. 
 
             public int Id { get; set; }
 
@@ -31,8 +31,14 @@ namespace FourthStar1.Models
 
             public Category Category { get; set; }
 
+            
+
             [Display(Name = "Date Created")]
+            [DataType(DataType.Date)]
+            [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        
             public DateTime DateCreated { get; set; }
+
 
     }
 
