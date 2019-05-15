@@ -45,24 +45,23 @@ namespace FourthStar1.Controllers
             var drills = from d in _context.Drills
                          select d;
 
+            //conditional - Is the user using the search bar?
             if (!String.IsNullOrEmpty(searchString))
             {
-                drills = drills.Where(s => s.DrillDescription.Contains(searchString)).Include(d => d.Category).Where(m => m.UserId == currentuser.Id);
+                drills = drills.Where(s => s.DrillDescription.Contains(searchString))
+                    .Include(d => d.Category)
+                    .Where(m => m.UserId == currentuser.Id);
                 return View(await drills.ToListAsync());
 
             }
 
-
             //this view is returned if user is NOT trying to implement search functionality.
-            return View(await _context.Drills.Include(d => d.Category).Where(m => m.UserId == currentuser.Id).ToListAsync());
+            return View(await _context.Drills
+                .Include(d => d.Category)
+                .Where(m => m.UserId == currentuser.Id)
+                .ToListAsync());
         }
-
-
-
-
-
-
-
+        
 
         // GET: Drills/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -71,8 +70,6 @@ namespace FourthStar1.Controllers
             {
                 return NotFound();
             }
-
-            
 
             var drill = await _context.Drills
                 .Include(d => d.Category)
@@ -96,27 +93,22 @@ namespace FourthStar1.Controllers
             }
 
             {
-                //var drill = _context.Drills.FindAsync();
-
                 //instantiate new viewmodel
                 var viewModel = new DrillCategory()
                 {
                     //i think Drill ='s null because the user is creating it, not the viewModel
                     Drill = null,
+
                     CategoryOptions = _context.Categories.Select(c => new SelectListItem
                     {
                         Value = c.CategoryId.ToString(),
                         Text = c.CategoryName
                     }).ToList()
                 };
-
-                //ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
+ 
                 return View(viewModel);
             }
-
-
-
-            //return View();
+            
         }
 
         // POST: Drills/Create
@@ -124,7 +116,7 @@ namespace FourthStar1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DrillName,DrillDescription,PlayersRequired,DateCreated,UserId,CategoryId")] Drill drill)
+        public async Task<IActionResult> Create([Bind("Id,DrillName,DrillDescription,PlayersRequired,UserId,CategoryId,Category,DateCreated")] Drill drill)
         {
             //don't fully understand why removing user/userId from ModelState here.
             ModelState.Remove("User");
@@ -132,14 +124,9 @@ namespace FourthStar1.Controllers
 
             var user = await GetCurrentUserAsync();
             drill.UserId = user.Id;
+            drill.DateCreated = DateTime.Now;
 
-
-            if (ModelState.IsValid)
-            {
-                _context.Add(drill);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            
 
             var viewmodel = new DrillCategory()
             {
@@ -151,9 +138,17 @@ namespace FourthStar1.Controllers
                 }).ToList()
             };
 
+            //this is awful.  I want to run the code inside the conditional, but i have to override the conditional with ! to set it to !ModelState.IsValid.  It appears that i don't need a valid model state in order to set current dateTime.  don't understand
+            if (!ModelState.IsValid)
+            {
+                _context.Add(drill);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+
 
             return View(viewmodel);
-
 
         }
 
