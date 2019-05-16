@@ -122,8 +122,8 @@ namespace FourthStar1.Controllers
         public async Task<IActionResult> Create([Bind("Id,DrillName,DrillDescription,PlayersRequired,UserId,CategoryId,Category,DateCreated")] Drill drill)
         {
             //don't fully understand why removing user/userId from ModelState here.
-            //ModelState.Remove("User");
-            //ModelState.Remove("userId");
+            ModelState.Remove("User");
+            ModelState.Remove("userId");
 
             var user = await GetCurrentUserAsync();
             drill.UserId = user.Id;
@@ -168,11 +168,12 @@ namespace FourthStar1.Controllers
             {
                 return NotFound();
             }
-            drill.DateCreated = DateTime.Now;
+           
             var viewmodel = new DrillCategory()
             {
                 Drill = drill,
-                CategoryOptions = _context.Categories.Select(c => new SelectListItem
+              
+            CategoryOptions = _context.Categories.Select(c => new SelectListItem
                 {
                     Value = c.CategoryId.ToString(),
                     Text = c.CategoryName
@@ -200,6 +201,7 @@ namespace FourthStar1.Controllers
 
             var user = await GetCurrentUserAsync();
             drill.UserId = user.Id;
+            drill.DateCreated = DateTime.Now;
 
             if (!ModelState.IsValid)
             {
@@ -226,7 +228,8 @@ namespace FourthStar1.Controllers
             var viewmodel = new DrillCategory()
             {
                 Drill = drill,
-                CategoryOptions = _context.Categories.Select(c => new SelectListItem
+                
+            CategoryOptions = _context.Categories.Select(c => new SelectListItem
                 {
                     Value = c.CategoryId.ToString(),
                     Text = c.CategoryName

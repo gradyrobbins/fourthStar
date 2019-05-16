@@ -14,7 +14,7 @@ namespace FourthStar1.Models
 
         public int Id { get; set; }
 
-        [Display(Name = "Drill Name")]
+        [Display(Name = "Drill")]
         [Required]
         public string DrillName { get; set; }
 
@@ -22,7 +22,7 @@ namespace FourthStar1.Models
         [Required]
         public string DrillDescription { get; set; }
 
-        [Display(Name = "Players Required")]
+        [Display(Name = "# Players")]
         [Required]
         public int PlayersRequired { get; set; }
 
