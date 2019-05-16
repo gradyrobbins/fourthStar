@@ -43,14 +43,16 @@ namespace FourthStar1.Controllers
             var currentuser = await GetCurrentUserAsync();
 
             var drills = from d in _context.Drills
-                         select d;
+                         select d
+                         ;
 
             //conditional - Is the user using the search bar?
             if (!String.IsNullOrEmpty(searchString))
             {
                 drills = drills.Where(s => s.DrillDescription.Contains(searchString))
                     .Include(d => d.Category)
-                    .Where(m => m.UserId == currentuser.Id);
+                    .Where(m => m.UserId == currentuser.Id)
+                    .OrderBy(m => m.CategoryId);
                 return View(await drills.ToListAsync());
 
             }
@@ -59,6 +61,7 @@ namespace FourthStar1.Controllers
             return View(await _context.Drills
                 .Include(d => d.Category)
                 .Where(m => m.UserId == currentuser.Id)
+                .OrderBy(m => m.CategoryId)
                 .ToListAsync());
         }
         
@@ -119,8 +122,8 @@ namespace FourthStar1.Controllers
         public async Task<IActionResult> Create([Bind("Id,DrillName,DrillDescription,PlayersRequired,UserId,CategoryId,Category,DateCreated")] Drill drill)
         {
             //don't fully understand why removing user/userId from ModelState here.
-            ModelState.Remove("User");
-            ModelState.Remove("userId");
+            //ModelState.Remove("User");
+            //ModelState.Remove("userId");
 
             var user = await GetCurrentUserAsync();
             drill.UserId = user.Id;
@@ -138,7 +141,7 @@ namespace FourthStar1.Controllers
                 }).ToList()
             };
 
-            //this is awful.  I want to run the code inside the conditional, but i have to override the conditional with ! to set it to !ModelState.IsValid.  It appears that i don't need a valid model state in order to set current dateTime.  don't understand
+            // I want to run the code inside the conditional, but i have to override the conditional with ! to set it to !ModelState.IsValid.  It appears that i don't need a valid model state in order to set current dateTime.  don't understand
             if (!ModelState.IsValid)
             {
                 _context.Add(drill);
@@ -165,7 +168,7 @@ namespace FourthStar1.Controllers
             {
                 return NotFound();
             }
-
+            drill.DateCreated = DateTime.Now;
             var viewmodel = new DrillCategory()
             {
                 Drill = drill,
@@ -198,7 +201,7 @@ namespace FourthStar1.Controllers
             var user = await GetCurrentUserAsync();
             drill.UserId = user.Id;
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {

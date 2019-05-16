@@ -5,60 +5,74 @@
 }
 
 <h1>Soccer Drills</h1>
+<h3>Grouped by Category</h3>
 
 <p>
     <a asp-action="Create">Create a New Drill</a>
 </p>
 
-<form asp-controller="Drills" asp-action="Index">
-    <p>
-        Search Your Drills: <input type="text" name="SearchString">
-        <input type="submit" value="Keyword Search" />
-    </p>
-</form>
+@*<form asp-controller="Drills" asp-action="Index">
+        <p>
+            Keyword search (by description): <input type="text" name="SearchString">
+            <input type="submit" value=" Search " />
+        </p>
+    </form>*@
 
 
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DrillName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DrillDescription)
-            </th>
-            <th>
+            <th width="10%">
                 @Html.DisplayNameFor(model => model.Category.CategoryName)
             </th>
-            <th>
+            <th width="10%">
+                @Html.DisplayNameFor(model => model.DrillName)
+            </th>
+            <th width="50%">
+                @Html.DisplayNameFor(model => model.DrillDescription)
+                <span></span><form asp-controller="Drills" asp-action="Index">
+                    
+                        <input type="text" name="SearchString">
+                        <input type="submit" value=" Keyword Search (by description)" />
+                   
+                </form>
+
+            </th>
+            <th width="10%">
                 @Html.DisplayNameFor(model => model.PlayersRequired)
             </th>
 
-            <th></th>
+            <th width="20%">
+               
+            </th>
         </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DrillName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DrillDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlayersRequired)
-            </td>
 
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+    </thead>
+
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DrillName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DrillDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlayersRequired)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

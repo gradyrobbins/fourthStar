@@ -9,38 +9,38 @@ namespace FourthStar1.Models
 {
     public class Drill
     {
-        
-    // You must define a type for representing a drill. 
 
-            public int Id { get; set; }
+        // You must define a type for representing a drill. 
 
-            [Display(Name = "Drill Name")]
-            [Required]
-            public string DrillName { get; set; }
+        public int Id { get; set; }
 
-            [Display(Name = "Description")]
-            [Required]
-            public string DrillDescription { get; set; }
+        [Display(Name = "Drill Name")]
+        [Required]
+        public string DrillName { get; set; }
 
-            [Display(Name = "Players Required")]
-            [Required]
-            public int PlayersRequired { get; set; }
+        [Display(Name = "Description")]
+        [Required]
+        public string DrillDescription { get; set; }
 
-            [ForeignKey("ApplicationUser")]
-            [Required]
-            public string UserId { get; set; }
+        [Display(Name = "Players Required")]
+        [Required]
+        public int PlayersRequired { get; set; }
 
-            [ForeignKey("CategoryId")]
-            [Required]
-            public int CategoryId { get; set; }
+        [ForeignKey("ApplicationUser")]
+        [Required]
+        public string UserId { get; set; }
 
-            [Required]
-            public Category Category { get; set; }
+        [ForeignKey("CategoryId")]
+        [Required]
+        public int CategoryId { get; set; }
 
-            [Display(Name = "Date Created")]
-            //[DataType(DataType.Date)]
-            //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-            public DateTime DateCreated { get; set; }
+        //[Required]
+        public Category Category { get; set; }
+
+        [Display(Name = "Date Created")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime DateCreated { get; set; }
 
     }
 
