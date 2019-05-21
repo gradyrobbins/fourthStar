@@ -1,5 +1,6 @@
 # FourthStar
 
+![USA Women Soccer Crest](download.png)
 ## A Server side capstone for Nashville Software School, May 2019
 
 ##### Building an ASP.NET MVC Web Application using Visual Studio on Windows, using SQL Server as the database engine
@@ -36,15 +37,16 @@ A step by step series of examples that tell you how to get a development environ
  
 ```
 
-1. Navigate to Tools menu at top of Visual Studio, then NuGet Package Manager, at the command prompt type: "add-migration Database", hit enter, then type "update-database" hit enter.  Verify that you have a fresh database in SSMS
+4. Navigate to Tools menu at top of Visual Studio, then NuGet Package Manager, at the command prompt type: "add-migration Database", hit enter, then type "update-database" hit enter.  Verify that you have a fresh database in SSMS
 
-1. Look at the top bar of Visual Studio and find the green arrow "play button", and make sure FourthStar1 is selected and click the arrow.  This should spin up the project.
+5. Look at the top bar of Visual Studio and find the green arrow "play button", and make sure FourthStar1 is selected and click the arrow.  This should spin up the project.
 
 Enjoy!
 
 #### Built With
 C#
 .Net
+SQL Server
 
 ### Author
 Grady Robbins
