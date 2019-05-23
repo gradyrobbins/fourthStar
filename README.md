@@ -1,19 +1,18 @@
 # FourthStar
 
 ![USA Women Soccer Crest](download.png)
+
 ## A Server side capstone for Nashville Software School, May 2019
 
-##### Building an ASP.NET MVC Web Application using Visual Studio on Windows, using SQL Server as the database engine
-
-##### Entity Framework/Identity Framework for user authentication
+##### An ASP.NET MVC Web Application using Entity Framework/Identity Framework for user authentication, Visual Studio on Windows, and SQL Server as the database engine
 
 ##### ERD 
-Here is a link to the google document with my ERD:
 
-https://docs.google.com/document/d/1NguTM-2AqzTCaf0kycH6MYCr-eL9xfmL5ga5PHqujW4/edit?usp=sharing
+![ERD](4thStar%20ERD%202.png)
+
 
 ## Getting Started
-The following instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+The following instructions will get a copy of the project up and running on your local machine for development and testing purposes.
 
 ## Prerequisites
 What things you need to install the software and how to install them
@@ -37,19 +36,19 @@ A step by step series of examples that tell you how to get a development environ
  
 ```
 
-4. Navigate to Tools menu at top of Visual Studio, then NuGet Package Manager, at the command prompt type: "add-migration Database", hit enter, then type "update-database" hit enter.  Verify that you have a fresh database in SSMS
+4. Navigate to Tools menu at top of Visual Studio, then NuGet Package Manager, at the command prompt type: ```add-migration Database```, hit enter, then type ```update-database``` hit enter.  Verify that you have a fresh database in SSMS
 
 5. Look at the top bar of Visual Studio and find the green arrow "play button", and make sure FourthStar1 is selected and click the arrow.  This should spin up the project.
 
 Enjoy!
 
 #### Built With
-C#
-.Net
+C#\
+.Net\
 SQL Server
 
 ### Author
 Grady Robbins
 
 ### Acknowledgments
-Special thanks to Julie Jones, Andy Collins, Jisie David, Brenda Long, Steve 'Coach' Brownlee, Meg Ducharme, Leah Hoeffling, Madi Peper, Emily Lemmon, Shu Sajid, Dejan Stepjanovic, Andrew Herring, Jenna Solis (Mahalo), John Wark & Nashville Software School Cohorts 25, 26, 27, 28 and 29!
+Special thanks to: Julie Jones,  Shu Sajid,  Andy Collins,  Jisie David,  Brenda Long,  Steve 'Coach' Brownlee,  Meg Ducharme,  Leah Hoeffling,  Madi Peper,  Emily Lemmon,   Dejan Stepjanovic,  Andrew Herring,  Jenna Solis (Mahalo),  John Wark &  Nashville Software School Cohorts 25, 26, 27, 28 and 29!
